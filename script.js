@@ -6,18 +6,11 @@ const resultText = document.getElementById("result");
 
 // Functions
 
-const cleanInputString = (str) => {
-  const regex = /[\W_]/g;
-  return str.toLowerCase().replace(regex, "");
-};
-
-const inputStringReversal = (str) => str.split("").reverse().join("");
-
-const palindromeChecker = (str) => {
-  const cleanStr = cleanInputString(str);
-  const reversedStr = inputStringReversal(cleanStr);
+const palindromeCheck = (str) => {
+  const cleanStr = str.replace(/[\W_]/g, "").toLowerCase();
+  const reversedStr = cleanStr.split("").reverse().join("");
   return cleanStr === reversedStr;
-};
+}
 
 // Interactivity
 
@@ -29,7 +22,7 @@ checkButton.addEventListener("click", () => {
   }
   
   resultText.style.display = "block";
-  resultText.innerText = palindromeChecker(inputValue) 
+  resultText.innerText = palindromeCheck(inputValue) 
   ? `${inputValue} is a palindrome.` 
   : `${inputValue} is not a palindrome.`;
   setTimeout(() => {
